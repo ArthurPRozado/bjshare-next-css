@@ -1,5 +1,10 @@
-/* BJ-Share Next 0.1 — tema complementar ao BJ-Black.
-   Sem JavaScript, fontes remotas ou rastreamento. */
+
+    
+  
+@import url("https://bj-share.info/static/styles/bj-black/style.css");
+
+/* BJ-Share Next 0.2 — importa o tema base BJ-Black.
+   Sem JavaScript ou rastreamento adicional. */
 :root {
  color-scheme:dark;
  --next-bg:#0b0d13; --next-panel:#161a25; --next-raised:#1d2230;
@@ -43,7 +48,7 @@ body.bj-sticky-menu {padding-top:0!important;}
 #menudrop > ul > li {float:none!important; width:auto!important; flex:1 1 auto; border-radius:10px; background:var(--next-panel);}
 #menudrop ul a {font-size:13px; line-height:1.4; padding:12px; color:var(--next-text);}
 #menudrop ul ul {background:var(--next-raised)!important; border:1px solid var(--next-line); border-radius:10px; box-shadow:0 12px 30px #0008;}
-#menudrop ul li:focus-within > ul {display:block;}
+#menudrop ul li:has(> a:focus-visible) > ul, #menudrop ul ul:has(:focus-visible) {display:block;}
 #menudrop ul li.current-menu-item {border-bottom:2px solid var(--next-accent); background:#292440;}
 #bj-sticky-menu-lock {display:none!important;}
 #searchbars > ul,body.bj-sticky-menu #searchbars > ul {display:grid!important; grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr)); gap:8px; margin:0!important;}
@@ -92,51 +97,4 @@ input[type=checkbox],input[type=radio] {accent-color:#a695ff;}
 .good,.goodish,.line_new {color:var(--next-good)!important;}
 .bad,.error,.invalid,.line_deleted {color:var(--next-bad)!important;}
 /* Desktop: duas colunas quando há espaço suficiente. */
-@media (min-width:1000px) and (pointer:fine) {
- #header {padding:18px max(24px,calc((100% - 1440px)/2));}
- #content .thin:has(> .sidebar) {grid-template-columns:minmax(0,1fr) minmax(220px,290px); align-items:start;}
- #content .thin > .sidebar {grid-column:2;}
- #content .thin > .main_column {grid-column:1;}
- #content #userform > .sidebar {float:right; width:260px; margin-left:20px;}
- #content #userform > .main_column {display:flow-root;}
-}
-/* Celular: pointer coarse também cobre o viewport virtual sem meta viewport. */
-@media (max-width:760px), (pointer:coarse) and (max-width:1100px) {
- #header {gap:10px;}
- #menudrop > ul > li {flex:1 1 28%;}
- #menudrop > ul > li > a {text-align:center; min-height:44px;}
- #menudrop ul ul, #menudrop ul ul ul, #menudrop ul ul ul ul {position:static!important; width:100%!important; max-height:none!important; box-shadow:none;}
- #menudrop ul ul li {width:100%!important;}
- #userinfo ul {flex:1 1 100%;}
- #searchbars > ul {grid-template-columns:repeat(2,minmax(0,1fr));}
- #searchbar_torrents {grid-column:1/-1;}
- #content .thin,#content .widethin {min-width:0!important;}
- /* Preserve cabeçalhos, ordenação, colspans e linhas expandidas: rolagem local. */
- #content :is(table.torrent_table,table.forum_index,table.message_table) {display:block; overflow-x:auto; overscroll-behavior-inline:contain; border-radius:12px;}
- #content :is(table.torrent_table,table.forum_index,table.message_table) > tbody {min-width:100%;}
- #content .torrent_table .big_info {min-width:190px;}
- #content .torrent_table .number_column {white-space:nowrap;}
- #content table.forum_post > tbody > tr > td.avatar {width:64px!important; max-width:64px; padding:4px; overflow-wrap:anywhere;}
- #content table.forum_post > tbody > tr > td.avatar img {max-width:100%; height:auto;}
- #content table.forum_post > tbody > tr > td.body {min-width:0; overflow-wrap:anywhere;}
- #content table.user_options > tbody > tr:not(.colhead_dark) > td {display:block; width:100%!important;}
- #content table.user_options > tbody > tr:not(.colhead_dark) > td.label {padding-bottom:2px; font-weight:700;}
- #content :is(input:not([type=checkbox]):not([type=radio]):not([type=hidden]),select,button) {min-height:44px;}
- #content .ft_container {overflow-x:auto;}
- #content .sceditor-container {width:100%!important;}
- #content .settings_sidebar {margin-bottom:16px;}
-}
-/* Viewport virtual típico de mobile sem meta viewport: aumentar escala útil.
-   Não substitui width=device-width e não usa zoom global. */
-@media (pointer:coarse) and (min-width:761px) and (max-width:1100px) {
- html body {font-size:clamp(20px,3.2vw,32px);}
- #content h2 {font-size:1.5em;} #content h3 {font-size:1.15em;}
- #header #userinfo,#menudrop ul a,#searchbars input,body.bj-sticky-menu #searchbar_torrents input#torrentssearch {font-size:inherit;}
- #menudrop ul a,#searchbars input {min-height:2.5em;}
- #content :is(input:not([type=checkbox]):not([type=radio]):not([type=hidden]),select,button) {min-height:2.5em;}
- #content .torrent_table .big_info {min-width:12em;}
- #footer {font-size:.8em;}
-}
-@media (prefers-reduced-motion:reduce) {
- #wrapper *,#wrapper *::before,#wrapper *::after {animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important;}
-}
+
